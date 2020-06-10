@@ -3,7 +3,6 @@ package com.udemy.springboot.customerdata;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -50,6 +49,24 @@ class CustomerDataApplicationTests {
 			System.out.println("No customer found for that ID!");
 		}
 		
+	}
+	
+	@Test
+	public void shouldUpdateCustomerEmail() {
+		
+		Customer customer = customerRepository.findById(1L).get();
+		
+		customer.setEmail("timt@email.com");
+		customerRepository.save(customer);
+		
+	}
+	
+	@Test
+	public void shouldDeleteCustomer() {
+		
+		Customer customer = customerRepository.findById(2L).get();
+		
+		customerRepository.delete(customer);
 	}
 
 }
